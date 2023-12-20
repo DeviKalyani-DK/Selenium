@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="practice.EmpireProj">
+      <class name="practice.Abhibus_Booking">
         <methods>
-          <include name="fileUpload"/>
+          <include name="bookingTicket"/>
         </methods>
-      </class> <!-- practice.EmpireProj -->
+      </class> <!-- practice.Abhibus_Booking -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

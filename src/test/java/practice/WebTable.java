@@ -10,7 +10,6 @@ import base.BaseClass;
 
 public class WebTable extends BaseClass{
 	
-	
 	@Test
 	public void tableRead() {
 		open("chrome");
