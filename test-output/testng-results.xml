@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-12-20T16:50:23 IST" name="Default suite" finished-at="2023-12-20T16:50:33 IST" duration-ms="9534">
+  <suite started-at="2023-12-20T20:52:19 IST" name="Default suite" finished-at="2023-12-20T20:52:50 IST" duration-ms="31833">
     <groups>
     </groups>
-    <test started-at="2023-12-20T16:50:23 IST" name="Default test" finished-at="2023-12-20T16:50:33 IST" duration-ms="9534">
+    <test started-at="2023-12-20T20:52:19 IST" name="Default test" finished-at="2023-12-20T20:52:50 IST" duration-ms="31833">
       <class name="practice.Abhibus_Booking">
-        <test-method signature="bookingTicket()[pri:0, instance:practice.Abhibus_Booking@2a54a73f]" started-at="2023-12-20T16:50:23 IST" name="bookingTicket" finished-at="2023-12-20T16:50:33 IST" duration-ms="9489" status="PASS">
+        <test-method signature="bookingTicket()[pri:0, instance:practice.Abhibus_Booking@2a54a73f]" started-at="2023-12-20T20:52:19 IST" name="bookingTicket" finished-at="2023-12-20T20:52:50 IST" duration-ms="31780" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- bookingTicket -->

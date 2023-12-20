@@ -1,6 +1,7 @@
 package practice;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -50,9 +51,9 @@ public class Abhibus_Booking extends BaseClass{
 		}
 		
 		//calender
-		String user_Mon="March";
-		String user_Year="2024";
-		String user_Date="19";
+		String user_Mon="December";
+		String user_Year="2023";
+		String user_Date="26";
 		
     	boolean cal=calender(user_Year,user_Mon,user_Date);
     	if(!cal) {
@@ -92,33 +93,62 @@ public class Abhibus_Booking extends BaseClass{
 				
 			}
 		}
-
+		}
 			
 		//select seats
-		String[] user_seats= {"9","10","11","12","13"};
+		String[] user_seats= {"11","12","13"};
 		
-		/* svg xpath
-		 * //table[@id='seat-layout-details']//*[local-name()='svg']//*[local-name()='rect']
-		 */
-		
-
-		List<WebElement> seats=driver.findElements(By.xpath("//table[@id='seat-layout-details']//button/span"));
+        boolean flag=false;
+		List<WebElement> seats=driver.findElements(By.xpath("//table[@id='seat-layout-details']//button"));
 		for(WebElement s:seats) {
+			WebElement seat=s.findElement(By.xpath(".//span"));
 			for(String st:user_seats) {
 				
-				if(st.equals(s.getText())) {
+				if(st.equals(seat.getText())) {
+					WebElement color=s.findElement(By.xpath("./*[name()='svg']/*[name()='rect']"));
+					if(color.getAttribute("fill").equals("#DEDEDE")) {
+						flag=true;
+						System.out.println(seat.getText()+" is already booked");
+						break;
+					}
 					s.click();
 					
 				}
 			}
 		}
 			
-		driver.findElement(By.xpath("//button[@class='btn btn-shake filled primary md inactive button']")).click();
-		driver.findElement(By.xpath("//a[text()='Skip']")).click();
+		if(flag==false) {
+			driver.findElement(By.xpath("//button[@class='btn btn-shake filled primary md inactive button']")).click();
+			driver.findElement(By.xpath("//a[text()='Skip']")).click();
+		}
+		else {
+			System.out.println("some seats are already booked... ");
+			return;
+		}
+		
+	//filling billing details
+		String p1_name="devi";
+		String p1_age="24";
+		String p1_gender="Female";
+		
+		List<WebElement> persons=driver.findElements(By.xpath("//div[@class='container passengers-detail ']//div[@class='row ']"));
+		for(WebElement p:persons) {
+			p.findElement(By.xpath(".//div[@id='passenger-detail-name']//input")).sendKeys(p1_name);
+			p.findElement(By.xpath(".//div[@id='passenger-detail-age']//input")).sendKeys(p1_age);
+			if(p1_gender.equals("Male")) {
+				p.findElement(By.xpath(".//div[@id='passenger-detail-gender']//button[text()='Male']")).click();
+			}
+			else {
+				p.findElement(By.xpath(".//div[@id='passenger-detail-gender']//button[text()='Female']")).click();
+			}
 			
 		}
-			
-		}
+		
+		driver.findElement(By.xpath("//input[@placeholder='Enter Mobile Number']")).sendKeys("9876543212");
+		driver.findElement(By.xpath("//input[@placeholder='Enter Email Address']")).sendKeys("devi@gmail.com");
+		
+		driver.findElement(By.xpath("//button[@class='btn  filled primary md inactive button']")).click();
+}
 	
 	//calender
 	public boolean calender(String user_Year,String user_Mon,String user_Date ) {
